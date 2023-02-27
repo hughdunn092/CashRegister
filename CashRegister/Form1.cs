@@ -97,9 +97,11 @@ namespace CashRegister
 
         private void changeButton_Click(object sender, EventArgs e)
         {
+
             //Ka-Ching sound
             SoundPlayer player = new SoundPlayer(Properties.Resources.registersound);
-            player.Play();
+            player.Play(); 
+            SoundPlayer poorPlayer = new SoundPlayer(Properties.Resources.hahapoor);
 
             try
             {
@@ -111,6 +113,7 @@ namespace CashRegister
                 {
                     //If there isn't enough money
                     receiptLabel.Text = "\nPoor Person Alert";
+                    poorPlayer.Play();
 
                 }
 
