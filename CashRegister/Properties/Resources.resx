@@ -145,4 +145,13 @@
   <data name="patty2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\patty2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="receiptprinter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\receiptprinter.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="receiptrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\receiptrip.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="registersound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\registersound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

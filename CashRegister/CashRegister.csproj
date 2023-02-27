@@ -107,5 +107,14 @@
   <ItemGroup>
     <None Include="Resources\paddyssign3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receiptrip.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receiptprinter.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registersound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
