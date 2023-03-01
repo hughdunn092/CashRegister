@@ -84,9 +84,13 @@ namespace CashRegister
             try
             {
                 //Converts products
-                numOfSteak = Convert.ToDouble(steakNumInput.Text);
-                numOfHam = Convert.ToDouble(rumHamNumInput.Text);
-                numOfMilk = Convert.ToDouble(fightMilkNumInput.Text);
+                numOfSteak = Math.Abs(Convert.ToDouble(steakNumInput.Text));
+                numOfHam = Math.Abs(Convert.ToDouble(rumHamNumInput.Text));
+                numOfMilk = Math.Abs(Convert.ToDouble(fightMilkNumInput.Text));
+
+                steakNumInput.Text = $"{numOfSteak.ToString()}";
+                rumHamNumInput.Text = $"{numOfHam.ToString()}";
+                fightMilkNumInput.Text = $"{numOfMilk.ToString()}";
 
                 //Math
                 subTotal = Math.Round((numOfSteak * steak) + (numOfHam * ham) + (numOfMilk * milk), 2);
