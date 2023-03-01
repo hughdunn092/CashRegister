@@ -177,6 +177,9 @@ namespace CashRegister
                     numOfHam = 0;
                     numOfSteak = 0;
                     numOfMilk = 0;
+                    subTotal = 0;
+                    taxTotal= 0;
+                    total= 0;
 
                     poorPlayer.Stop();
 
@@ -273,7 +276,9 @@ namespace CashRegister
             numOfHam = 0;
             numOfSteak = 0;
             numOfMilk = 0;
-
+            subTotal = 0;
+            taxTotal = 0;
+            total = 0;
 
 
 
