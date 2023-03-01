@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+Hugh Dunnem
+ICS3U
+Cash Register Project
+March 1, 2023
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -16,18 +23,15 @@ namespace CashRegister
 
     public partial class pubMain : Form
     {
-        //Globals... probably
+        //Globals
         double steak = 13.50;
         double numOfSteak = 0;
-        double steakTotal;
 
         double ham = 10.50;
         double numOfHam = 0;
-        double hamTotal;
 
         double milk = 4.00;
         double numOfMilk = 0;
-        double milkTotal;
 
         double tendered = 0;
 
@@ -43,6 +47,10 @@ namespace CashRegister
         public pubMain()
         {
             InitializeComponent();
+
+            //Parent function to align receipt prices
+            receiptAmountLabel.Parent = receiptLabel;
+            receiptAmountLabel.Location = new Point(150, 70);
         }
 
 
@@ -53,6 +61,7 @@ namespace CashRegister
 
         private void totalButton_Click(object sender, EventArgs e)
         {
+
             //If input is left blank, sets to 0
             if (steakNumInput.Text == "")
             {
@@ -85,7 +94,8 @@ namespace CashRegister
                 stPriceOutput.Text = $"{subTotal.ToString("C")}";
                 taPriceOutput.Text = $"{taxTotal.ToString("C")}";
                 toPriceOutput.Text = $"{total.ToString("C")}";
-                 
+                
+                //Can't use button yet
                 changeButton.Enabled = true;
             }
 
@@ -98,9 +108,11 @@ namespace CashRegister
         private void changeButton_Click(object sender, EventArgs e)
         {
 
-            //Ka-Ching sound
+            //Ka-Ching sound (cash register sound)
             SoundPlayer player = new SoundPlayer(Properties.Resources.registersound);
             player.Play(); 
+
+            //Laugh track
             SoundPlayer poorPlayer = new SoundPlayer(Properties.Resources.hahapoor);
 
             try
@@ -112,16 +124,41 @@ namespace CashRegister
                 if (tendered < total)
                 {
                     //If there isn't enough money
-                    receiptLabel.Text = "\nPoor Person Alert";
                     poorPlayer.Play();
+                    errorLabel.Refresh();
+                    Thread.Sleep(850);
+                    errorLabel.Text = "POOR PERSON ALERT";
+                    errorLabel.ForeColor = Color.White;
+                    errorLabel.BackColor= Color.Red;
+
+                    errorLabel.Refresh();
+                    Thread.Sleep(2000);
+                    
+                    //Resets inputs
+                    errorLabel.Text = "";
+                    errorLabel.BackColor = Color.Transparent;
+                    steakNumInput.Text = "";
+                    rumHamNumInput.Text = "";
+                    fightMilkNumInput.Text = "";
+                    stPriceOutput.Text = "";
+                    taPriceOutput.Text = "";
+                    toPriceOutput.Text = "";
+                    changeOutput.Text = "";
+                    tenderInput.Text = "";
+                    numOfHam = 0;
+                    numOfSteak = 0;
+                    numOfMilk = 0;
+
+                    poorPlayer.Stop();
+
 
                 }
 
                 else 
                 {
                     //Calculates change
-                    change = tendered - total;
-                    changeOutput.Text = $"{change}";
+                    change = Math.Round(tendered - total, 2);
+                    changeOutput.Text = $"${change}";
                 }
 
                 //Can't use button yet
@@ -138,40 +175,49 @@ namespace CashRegister
         private void receiptButton_Click(object sender, EventArgs e)
 
         {
-            //VREEBEEVREE sound
+            //VREEBEEVREE sound (receipt print)
             SoundPlayer player = new SoundPlayer(Properties.Resources.receiptprinter);
            player.Play();
 
             //Receipt Text
-            receiptLabel.Text += $"\n*****************************************";
-            receiptLabel.Text += $"\nPaddy's Pub";
-            receiptLabel.Text += $"\nFebruary 27, 2023";
-            receiptLabel.Text += $"\n*****************************************";
-            Refresh();
+            receiptLabel.Text = $"\n*******************************************";
+            receiptLabel.Text += $"\n                Paddy's Pub";
+            receiptLabel.Text += $"\n             February 27, 2023";
+            receiptLabel.Text += $"\n*******************************************";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n{numOfSteak}    Milk Steak                 {(numOfSteak * steak)}";
-            Refresh();
+            receiptLabel.Text += $"\n\n   {numOfSteak}         Milk Steak";
+            receiptAmountLabel.Text += $"\n\n${(numOfSteak * steak)}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n{numOfHam}      Rum Ham               {(numOfHam * ham)}";
-            Refresh();
+            receiptLabel.Text += $"\n   {numOfHam}           Rum Ham";
+            receiptAmountLabel.Text += $"\n${(numOfHam * ham)}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n{numOfMilk}     Fight Milk            {(numOfMilk * milk)}";
-            Refresh();
+            receiptLabel.Text += $"\n   {numOfMilk}           Fight Milk";
+            receiptAmountLabel.Text += $"\n${(numOfMilk * milk)}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n    Sub Total                 {subTotal}";
-            Refresh();
+            receiptLabel.Text += $"\n\n                Sub Total";
+            receiptAmountLabel.Text += $"\n\n${subTotal}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n      Sales Tax               {taxTotal}";
-            Refresh();
+            receiptLabel.Text += $"\n                Sales Tax";
+            receiptAmountLabel.Text += $"\n${taxTotal}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n      Total                     {total}";
-            Refresh();
+            receiptLabel.Text += $"\n                Total";
+            receiptAmountLabel.Text += $"\n${total}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n    Cash                      ${tendered}";
-            Refresh();
+            receiptLabel.Text += $"\n\n                 Cash";
+            receiptAmountLabel.Text += $"\n\n${tendered}";
+            receiptLabel.Text += $"\n                 Change";
+            receiptAmountLabel.Text += $"\n${change}";
+            receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\nThank you for Shopping!";
-            receiptLabel.Text += $"\nDon't Come Back!";
+            receiptLabel.Text += $"\n\n\n       Thank you for Shopping!";
+            receiptLabel.Text += $"\n            Don't Come Back!";
 
             player.Stop();
 
@@ -179,10 +225,11 @@ namespace CashRegister
 
         private void newOrder_Click(object sender, EventArgs e)
         {
-            //KSSSSHHHH sound
+            //KSSSSHHHH sound (receipt rip)
             SoundPlayer player = new SoundPlayer(Properties.Resources.receiptrip);
             player.Play();
-           
+            
+            //Resets receipt
             steakNumInput.Text = "";
             rumHamNumInput.Text = "";
             fightMilkNumInput.Text = "";
@@ -192,6 +239,11 @@ namespace CashRegister
             toPriceOutput.Text = "";
             changeOutput.Text = "";
             tenderInput.Text = "";
+            receiptAmountLabel.Text = "";
+            numOfHam = 0;
+            numOfSteak = 0;
+            numOfMilk = 0;
+
 
 
 

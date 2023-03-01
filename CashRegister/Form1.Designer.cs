@@ -53,6 +53,8 @@
             this.paddysSign = new System.Windows.Forms.PictureBox();
             this.receiptLabel = new System.Windows.Forms.Label();
             this.menuPicture = new System.Windows.Forms.PictureBox();
+            this.receiptAmountLabel = new System.Windows.Forms.Label();
+            this.errorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.paddysSign)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuPicture)).BeginInit();
             this.SuspendLayout();
@@ -278,7 +280,6 @@
             this.receiptLabel.Name = "receiptLabel";
             this.receiptLabel.Size = new System.Drawing.Size(335, 628);
             this.receiptLabel.TabIndex = 1;
-            this.receiptLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // menuPicture
             // 
@@ -290,6 +291,29 @@
             this.menuPicture.TabIndex = 20;
             this.menuPicture.TabStop = false;
             // 
+            // receiptAmountLabel
+            // 
+            this.receiptAmountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.receiptAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.receiptAmountLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.receiptAmountLabel.Location = new System.Drawing.Point(963, 198);
+            this.receiptAmountLabel.Name = "receiptAmountLabel";
+            this.receiptAmountLabel.Size = new System.Drawing.Size(95, 437);
+            this.receiptAmountLabel.TabIndex = 24;
+            this.receiptAmountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.BackColor = System.Drawing.Color.Transparent;
+            this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(136, 427);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 82);
+            this.errorLabel.TabIndex = 25;
+            this.errorLabel.UseMnemonic = false;
+            // 
             // pubMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -297,6 +321,8 @@
             this.BackgroundImage = global::CashRegister.Properties.Resources.paddy3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1122, 882);
+            this.Controls.Add(this.errorLabel);
+            this.Controls.Add(this.receiptAmountLabel);
             this.Controls.Add(this.paddysSign);
             this.Controls.Add(this.lineLabel);
             this.Controls.Add(this.changeOutput);
@@ -358,6 +384,8 @@
         private System.Windows.Forms.Label changeOutput;
         private System.Windows.Forms.Label lineLabel;
         private System.Windows.Forms.PictureBox paddysSign;
+        private System.Windows.Forms.Label receiptAmountLabel;
+        private System.Windows.Forms.Label errorLabel;
     }
 }
 
