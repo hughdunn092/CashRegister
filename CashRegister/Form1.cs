@@ -51,6 +51,9 @@ namespace CashRegister
             //Parent function to align receipt prices
             receiptAmountLabel.Parent = receiptLabel;
             receiptAmountLabel.Location = new Point(150, 70);
+
+            amountLabel.Parent = receiptLabel;
+            amountLabel.Location = new Point(10, 70);
         }
 
 
@@ -186,33 +189,36 @@ namespace CashRegister
             receiptLabel.Text += $"\n*******************************************";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n   {numOfSteak}         Milk Steak";
+            receiptLabel.Text += $"\n\n              Milk Steak";
             receiptAmountLabel.Text += $"\n\n${(numOfSteak * steak)}";
+            amountLabel.Text += $"\n\n{numOfSteak}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n   {numOfHam}           Rum Ham";
+            receiptLabel.Text += $"\n              Rum Ham";
             receiptAmountLabel.Text += $"\n${(numOfHam * ham)}";
+            amountLabel.Text += $"\n{numOfHam}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n   {numOfMilk}           Fight Milk";
+            receiptLabel.Text += $"\n              Fight Milk";
             receiptAmountLabel.Text += $"\n${(numOfMilk * milk)}";
+            amountLabel.Text += $"\n{numOfMilk}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n                Sub Total";
+            receiptLabel.Text += $"\n\n              Sub Total";
             receiptAmountLabel.Text += $"\n\n${subTotal}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n                Sales Tax";
+            receiptLabel.Text += $"\n              Sales Tax";
             receiptAmountLabel.Text += $"\n${taxTotal}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n                Total";
+            receiptLabel.Text += $"\n              Total";
             receiptAmountLabel.Text += $"\n${total}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n                 Cash";
+            receiptLabel.Text += $"\n\n              Cash";
             receiptAmountLabel.Text += $"\n\n${tendered}";
-            receiptLabel.Text += $"\n                 Change";
+            receiptLabel.Text += $"\n              Change";
             receiptAmountLabel.Text += $"\n${change}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
@@ -240,6 +246,7 @@ namespace CashRegister
             changeOutput.Text = "";
             tenderInput.Text = "";
             receiptAmountLabel.Text = "";
+            amountLabel.Text = "";
             numOfHam = 0;
             numOfSteak = 0;
             numOfMilk = 0;

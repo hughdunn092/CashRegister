@@ -55,6 +55,7 @@
             this.menuPicture = new System.Windows.Forms.PictureBox();
             this.receiptAmountLabel = new System.Windows.Forms.Label();
             this.errorLabel = new System.Windows.Forms.Label();
+            this.amountLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.paddysSign)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuPicture)).BeginInit();
             this.SuspendLayout();
@@ -314,6 +315,16 @@
             this.errorLabel.TabIndex = 25;
             this.errorLabel.UseMnemonic = false;
             // 
+            // amountLabel
+            // 
+            this.amountLabel.BackColor = System.Drawing.Color.Transparent;
+            this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amountLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.amountLabel.Location = new System.Drawing.Point(749, 198);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(58, 437);
+            this.amountLabel.TabIndex = 26;
+            // 
             // pubMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -321,6 +332,7 @@
             this.BackgroundImage = global::CashRegister.Properties.Resources.paddy3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1122, 882);
+            this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.receiptAmountLabel);
             this.Controls.Add(this.paddysSign);
@@ -386,6 +398,7 @@
         private System.Windows.Forms.PictureBox paddysSign;
         private System.Windows.Forms.Label receiptAmountLabel;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Label amountLabel;
     }
 }
 
