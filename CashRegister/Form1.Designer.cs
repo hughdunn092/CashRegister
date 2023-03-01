@@ -281,6 +281,7 @@
             this.receiptLabel.Name = "receiptLabel";
             this.receiptLabel.Size = new System.Drawing.Size(335, 628);
             this.receiptLabel.TabIndex = 1;
+            this.receiptLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // menuPicture
             // 
@@ -297,9 +298,9 @@
             this.receiptAmountLabel.BackColor = System.Drawing.Color.Transparent;
             this.receiptAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.receiptAmountLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.receiptAmountLabel.Location = new System.Drawing.Point(963, 198);
+            this.receiptAmountLabel.Location = new System.Drawing.Point(974, 237);
             this.receiptAmountLabel.Name = "receiptAmountLabel";
-            this.receiptAmountLabel.Size = new System.Drawing.Size(95, 437);
+            this.receiptAmountLabel.Size = new System.Drawing.Size(84, 398);
             this.receiptAmountLabel.TabIndex = 24;
             this.receiptAmountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -320,10 +321,11 @@
             this.amountLabel.BackColor = System.Drawing.Color.Transparent;
             this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.amountLabel.Location = new System.Drawing.Point(749, 198);
+            this.amountLabel.Location = new System.Drawing.Point(749, 237);
             this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(58, 437);
+            this.amountLabel.Size = new System.Drawing.Size(58, 398);
             this.amountLabel.TabIndex = 26;
+            this.amountLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pubMain
             // 

@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Media;
+using System.IO;
+using System.Security.AccessControl;
 
 namespace CashRegister
 {
@@ -43,6 +45,9 @@ namespace CashRegister
         double taxTotal;
         double total;
 
+        System.Windows.Media.MediaPlayer sunnyMusic = new System.Windows.Media.MediaPlayer();
+        System.Windows.Media.MediaPlayer receiptSound = new System.Windows.Media.MediaPlayer();
+
 
         public pubMain()
         {
@@ -50,10 +55,27 @@ namespace CashRegister
 
             //Parent function to align receipt prices
             receiptAmountLabel.Parent = receiptLabel;
-            receiptAmountLabel.Location = new Point(150, 70);
+            receiptAmountLabel.Location = new Point(250, 100);
 
             amountLabel.Parent = receiptLabel;
-            amountLabel.Location = new Point(10, 70);
+            amountLabel.Location = new Point(10, 100);
+
+            receiptSound.Open(new Uri(Application.StartupPath + "/Resources/receiptprinter.wav"));
+            sunnyMusic.Open(new Uri(Application.StartupPath + "/Resources/iasipmusic.wav"));
+
+            sunnyMusic.MediaEnded += new EventHandler(sunnyMusic_MediaEnded);
+
+            sunnyMusic.Play();
+
+
+
+
+        }
+
+        private void sunnyMusic_MediaEnded(object sender, EventArgs e)
+        {
+            sunnyMusic.Stop();
+            sunnyMusic.Play();
         }
 
 
@@ -183,53 +205,50 @@ namespace CashRegister
 
         {
             //VREEBEEVREE sound (receipt print)
-            SoundPlayer player = new SoundPlayer(Properties.Resources.receiptprinter);
-           player.Play();
+            receiptSound.Play();
 
             //Receipt Text
-            receiptLabel.Text = $"\n*******************************************";
-            receiptLabel.Text += $"\n                Paddy's Pub";
-            receiptLabel.Text += $"\n             February 27, 2023";
-            receiptLabel.Text += $"\n*******************************************";
+            receiptLabel.Text = $"\n****************************************";
+            receiptLabel.Text += $"\nPaddy's Pub";
+            receiptLabel.Text += $"\nFebruary 27, 2023";
+            receiptLabel.Text += $"\n***************************************";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n              Milk Steak";
+            receiptLabel.Text += $"\n\nMilk Steak";
             receiptAmountLabel.Text += $"\n\n${(numOfSteak * steak)}";
             amountLabel.Text += $"\n\n{numOfSteak}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n              Rum Ham";
+            receiptLabel.Text += $"\nRum Ham";
             receiptAmountLabel.Text += $"\n${(numOfHam * ham)}";
             amountLabel.Text += $"\n{numOfHam}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n              Fight Milk";
+            receiptLabel.Text += $"\nFight Milk";
             receiptAmountLabel.Text += $"\n${(numOfMilk * milk)}";
             amountLabel.Text += $"\n{numOfMilk}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n              Sub Total";
+            receiptLabel.Text += $"\n\nSub Total";
             receiptAmountLabel.Text += $"\n\n${subTotal}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n              Sales Tax";
+            receiptLabel.Text += $"\nSales Tax";
             receiptAmountLabel.Text += $"\n${taxTotal}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n              Total";
+            receiptLabel.Text += $"\nTotal";
             receiptAmountLabel.Text += $"\n${total}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n              Cash";
+            receiptLabel.Text += $"\n\nCash";
             receiptAmountLabel.Text += $"\n\n${tendered}";
-            receiptLabel.Text += $"\n              Change";
+            receiptLabel.Text += $"\nChange";
             receiptAmountLabel.Text += $"\n${change}";
             receiptLabel.Refresh();
             Thread.Sleep(800);
-            receiptLabel.Text += $"\n\n\n       Thank you for Shopping!";
-            receiptLabel.Text += $"\n            Don't Come Back!";
-
-            player.Stop();
+            receiptLabel.Text += $"\n\n\nThank you for Shopping!";
+            receiptLabel.Text += $"\nDon't Come Back!";
 
         }
 
